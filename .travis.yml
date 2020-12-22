@@ -15,7 +15,7 @@ before_install:
   - gcloud config set compute/zone us-central1-a
   - gcloud container clusters get-credentials multi-deployer
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t deeptinair/react-test -f ./client/Dockerfile.dev /client
+  - docker build -t deeptinair/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true deeptinair/react-test npm test
